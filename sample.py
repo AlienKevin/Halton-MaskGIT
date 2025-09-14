@@ -26,7 +26,15 @@ def sample_and_save(cli_args):
     args.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # Select Network (Large 384 is the best, but the slowest)
-    args.vit_size = "tiny"  # "tiny", "small", "base", "large"
+    # args.vit_size = "tiny"
+    # args.cfg_w = 1.5
+
+    # args.vit_size = "small"
+    # args.cfg_w = 1.0
+
+    args.vit_size = "base"
+    args.cfg_w = 0.7
+
     args.img_size = 256
     args.compile = True
     args.dtype = "bfloat16"
@@ -35,7 +43,6 @@ def sample_and_save(cli_args):
 
     args.sampler = "halton"
     args.sched_mode = 'arccos'
-    args.cfg_w = 1.5
     args.r_temp = 5.0
     args.sched_pow=2
     args.top_k=-1
